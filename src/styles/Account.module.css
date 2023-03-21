@@ -17,9 +17,16 @@
   border-radius: 20px;
   padding: 32px;
 }
-
+.formBox * {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18.9px;
+}
 .formBox h1 {
   margin-bottom: 40px;
+  font-size: 32px;
+  line-height: 40.32px;
+  letter-spacing: -0.5px;
 }
 
 .formBox button {
@@ -50,6 +57,10 @@
   outline: none;
 }
 
+.formBox p {
+  display: flex;
+  justify-content: center;
+}
 .formBox span {
   color: var(--red);
   cursor: pointer;

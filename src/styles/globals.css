@@ -41,6 +41,7 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
+  /* Added color by Figma design */
   --red: #FC4747;
   --dark-blue: #10141E;
   --grey-blue: #5A698F;
@@ -95,22 +96,13 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-[data-theme-mode="dark"] {
-  
 }
 
 @media (prefers-color-scheme: dark) {

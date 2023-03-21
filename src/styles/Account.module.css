@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 78px;
+  margin-bottom: 83px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: var(--semi-blue);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.formBox h1 {
+  margin-bottom: 40px;
+}
+
+.formBox button {
+  margin-top: 40px;
+  border-radius: 6px;
+  background-color: var(--red);
+  padding: 14px 96.5px 15px 96.5px;
+  border: none;
+  cursor: pointer;
+}
+.formBox button:hover {
+  background-color: var(--white);
+  color: var(--semi-blue);
+}
+
+.formBox button, .formBox input {
+  margin-bottom: 24px;
+}
+
+.formBox input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--grey-blue);
+  padding: 0 0 18px 16px;
+  caret-color: var(--red);
+}
+.formBox input:focus-visible {
+  outline: none;
+}
+
+.formBox span {
+  color: var(--red);
+  cursor: pointer;
+}

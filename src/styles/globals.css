@@ -105,6 +105,11 @@ a {
   text-decoration: none;
 }
 
+[data-theme-mode="dark"] {
+  --box: var(--semi-blue);
+  --box-shadow: var(--grey-blue);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

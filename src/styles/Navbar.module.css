@@ -1,0 +1,53 @@
+.navContainer {
+  padding: 10px;
+  height: 100vh;
+}
+
+.nav, .nav > div, .iconBar {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  padding: 35px 28px 32px 28px;
+  background-color: var(--semi-blue);
+  width: fit-content;
+  min-height: 100%;
+  border-radius: 20px;
+  justify-content: space-between;
+}
+
+.nav > div{
+  align-items: center;
+}
+
+.nav img {
+  cursor: pointer;
+}
+
+.logo {
+  box-shadow: 0px 0px 15px 0px var(--red);
+  border-radius: 5px;
+}
+
+.iconBar img, .avatar {
+  box-shadow: 0px 0px 20px 0px var(--box-shadow);
+}
+
+.iconBar {
+  margin-top: 75px;
+}
+
+.iconBar img {
+  margin-bottom: 40px;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.iconBar img:hover {
+  filter: invert(100%) sepia(15%) saturate(1462%) hue-rotate(200deg) brightness(107%) contrast(103%);
+  background-color: rgba(163, 163, 163, .5);
+}
+
+.avatar {
+  border-radius: 50%;
+}

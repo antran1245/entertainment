@@ -9,15 +9,19 @@ import styles from '@/styles/Navbar.module.css'
 
 export default function NavBar() {
   return(
-    <nav className={styles.nav}>
-      <div>
-        <Image src={logo} alt="logo"/>
-        <Image src={home} alt="home icon"/>
-        <Image src={movies} alt="movies icon"/>
-        <Image src={tv} alt="tv series icon"/>
-        <Image src={bookmark} alt="bookmark icon"/>
-      </div>
-      <Image src={avatar} alt="avatar" width={40} height={40}/>
-    </nav>
+    <div className={styles.navContainer}>
+      <nav className={styles.nav}>
+        <div>
+          <Image src={logo} alt="logo" className={styles.logo}/>
+          <div className={styles.iconBar}>
+            <Image src={home} alt="home icon"/>
+            <Image src={movies} alt="movies icon"/>
+            <Image src={tv} alt="tv series icon"/>
+            <Image src={bookmark} alt="bookmark icon"/>
+          </div>
+        </div>
+        <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>
+      </nav>
+    </div>
   )
 }

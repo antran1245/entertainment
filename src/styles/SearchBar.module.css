@@ -1,0 +1,19 @@
+.searchbar {
+  display: flex;
+  width: 95%;
+}
+.searchbar input {
+  margin-left: 24px;
+  font-size: 24px;
+  line-height: 30.24px;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding-bottom: 14px;
+  caret-color: var(--red);
+}
+
+.searchbar input:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--grey-blue);
+}

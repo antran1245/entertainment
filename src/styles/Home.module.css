@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+}
+
+.content {
+  margin-top: 64px;
+  width: 100%;
+}

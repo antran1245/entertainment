@@ -1,0 +1,51 @@
+.container > div {
+  margin-top: 25px;
+}
+
+.card, .card > img{
+  border-radius: 8px;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+}
+
+.cardBody {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  padding: 16px 24px 24px 24px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bookmarkContainer {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(16, 20, 30, .5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.textContainer .text {
+  display: flex;
+  width: 150px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--white);
+  opacity: .75;
+}
+.textContainer .title {
+  color: var(--white);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+}

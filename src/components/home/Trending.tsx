@@ -1,5 +1,5 @@
-import styles from '@/styles/Trending.module.css'
 import TrendingCard from './TrendingCard'
+import styles from '@/styles/Trending.module.css'
 
 export default function Trending() {
   return(

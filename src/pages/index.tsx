@@ -1,8 +1,8 @@
+import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
 import Trending from '@/components/home/Trending'
+import styles from '@/styles/Home.module.css'
 
 export default function Home() {
   return (

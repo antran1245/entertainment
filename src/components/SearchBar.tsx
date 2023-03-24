@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import search from '@/assets/icon-search.svg'
+import search from '/public/assets/icon-search.svg'
 import styles from '@/styles/SearchBar.module.css'
 
 export default function SearchBar() {

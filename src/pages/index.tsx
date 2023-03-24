@@ -2,6 +2,7 @@ import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
+import Trending from '@/components/home/Trending'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <NavBar/>
         <div className={styles.content}>
           <SearchBar/>
+          <Trending/>
         </div>
       </main>
     </>

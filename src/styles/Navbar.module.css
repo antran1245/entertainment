@@ -51,3 +51,44 @@
 .avatar {
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 1023px) {
+  .navContainer {
+    width: 100vw;
+    height: auto;
+    padding: 23px 24px 0 25px;
+  }
+  .nav {
+    padding: 21px 16px 19px 24px;
+    width: 100%;
+    min-height: auto;
+    justify-content: space-between;
+  }
+
+  .nav, .nav > div, .iconBar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav > div {
+    width: 100%;
+  }
+  .iconBar {
+    margin: 0 auto;
+    width: 173px;
+    justify-content: space-between;
+  }
+  .iconBar > img {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navContainer {
+    padding: 0;
+    height: 100px;
+  }
+  .nav {
+    border-radius: 0;
+  }
+}

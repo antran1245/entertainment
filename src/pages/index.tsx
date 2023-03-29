@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react'
+import { Data } from '@/types/data'
 import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
 import Trending from '@/components/home/Trending'
 import styles from '@/styles/Home.module.css'
-import { useEffect, useState } from 'react'
-import { Data } from '@/types/data'
 
 export default function Home() {
   const [data, setData] = useState<Data | []>([])

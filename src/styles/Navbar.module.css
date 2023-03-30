@@ -1,6 +1,9 @@
 .navContainer {
   padding: 32px;
   height: 100vh;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .nav, .nav > div, .iconBar {

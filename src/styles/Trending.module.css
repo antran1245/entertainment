@@ -1,5 +1,18 @@
+.container {
+  width: 100%;
+}
 .container > div {
   margin-top: 25px;
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.container > div::-webkit-scrollbar {
+  display: none;
 }
 
 .card, .card > img{
@@ -10,6 +23,7 @@
   position: relative;
   height: 100%;
   width: fit-content;
+  margin-right: 40px;
 }
 
 .cardBody {

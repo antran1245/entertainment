@@ -4,11 +4,16 @@ import movie from '/public/assets/icon-category-movie.svg'
 import tv from '/public/assets/icon-category-tv.svg'
 import styles from '@/styles/Trending.module.css'
 import Image from 'next/image'
+import { SingleEntry } from '@/types/data'
 
-export default function TrendingCard() {
+interface TrendingCardProp {
+  item : SingleEntry
+}
+
+export default function TrendingCard({ item } : TrendingCardProp) {
   return (
     <div className={styles.card}>
-      <Image src={'/assets/thumbnails/beyond-earth/trending/large.jpg'} alt="beyond earth" width={470} height={230}/>
+      <Image src={`${(item.thumbnail.trending?.large)?.slice(1)}`} alt={`${item.title}`} width={470} height={230}/>
       <div className={styles.cardBody}>
         <div className={styles.bookmarkContainer}>
           <Image src={bookmarkEmpty} alt="bookmark" width={12} height={14}/>

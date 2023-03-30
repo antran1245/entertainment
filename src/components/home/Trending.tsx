@@ -20,7 +20,13 @@ export default function Trending({ trending }: TrendingProp) {
   const scrollingTrend = (e : React.MouseEvent) => {
     if(isScrolling && ref.current) {
       ref.current.scrollLeft = scrollX + e.clientX - clientX
-      setScrollX(scrollX+e.clientX-clientX)
+      if (scrollX + e.clientX - clientX > window.innerWidth) {
+        setScrollX(window.innerWidth)
+      } else if (scrollX + e.clientX - clientX < 0) {
+        setScrollX(0)
+      } else {
+        setScrollX(scrollX+e.clientX-clientX)
+      }
       setClientX(e.clientX)
     }
   }

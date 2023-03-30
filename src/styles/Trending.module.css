@@ -10,6 +10,7 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  cursor: grab;
 }
 .container > div::-webkit-scrollbar {
   display: none;
@@ -24,6 +25,7 @@
   height: 100%;
   width: fit-content;
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .cardBody {

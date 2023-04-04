@@ -20,9 +20,9 @@ export default function TrendingCard({ item } : TrendingCardProp) {
         </div>
         <div className={styles.textContainer}>
           <p className={styles.text}>
-            2019 &#x2022; <Image src={movie} alt="movie icon"/> Movie &#x2022; PG
+            {`${item.year}`} &#x2022; <Image src={item.category === 'Movie' ? movie : tv} alt={`${item.category === 'Movie' ? 'movie' : 'tv'} icon`} /> {`${item.category}`} &#x2022; {`${item.rating}`} 
           </p>
-          <p className={styles.title}>Beyond Earth</p>
+          <p className={styles.title}>{`${item.title}`} </p>
         </div>
       </div>
     </div>

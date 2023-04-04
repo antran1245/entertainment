@@ -4,7 +4,7 @@ import SearchBar from '@/components/SearchBar'
 import Trending from '@/components/home/Trending'
 import styles from '@/styles/Home.module.css'
 import { useFetch } from '@/hooks/useFetch'
-import List from '@/components/List'
+import Gallery from '@/components/Gallery'
 
 export default function Home() {
   const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')
@@ -23,7 +23,7 @@ export default function Home() {
           <SearchBar/>
           <Trending trending={trending}/>
           <h2>Recommended for you</h2>
-          <List data={data}/>
+          <Gallery data={data}/>
         </div>
       </main>
     </>

@@ -19,14 +19,14 @@ export default function TrendingCard({ item } : TrendingCardProp) {
           <Image src={bookmarkEmpty} alt="bookmark" width={12} height={14}/>
         </div>
         <div className={styles.textContainer}>
-          <p className={styles.text}>
+          <div className={styles.text}>
             <p>{`${item.year}`}</p>
             <span>&#x2022;</span>
             <Image src={item.category === 'Movie' ? movie : tv} alt={`${item.category === 'Movie' ? 'movie' : 'tv'} icon`} />
             <p>{`${item.category}`}</p>
             <span>&#x2022;</span>
             <p>{`${item.rating}`}</p>
-          </p>
+          </div>
           <p className={styles.title}>{`${item.title}`} </p>
         </div>
       </div>

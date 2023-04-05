@@ -12,7 +12,7 @@ export default function Gallery({ data } : GalleryProp) {
       <h2>Recommended for you</h2>
       <div id={styles.gallery}>
         {data.map((item: SingleEntry, index: any) => {
-          return <Card item={item}/>
+          return <Card key={index} item={item}/>
         })}
       </div>
     </div>

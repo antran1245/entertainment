@@ -1,16 +1,21 @@
 .container {
   margin-top: 40px;
+  margin-bottom: 10px;
 }
-
+.container h2 {
+  margin-bottom: 32px;
+}
 #gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px 32px;
 }
 
 .card {
-  margin-top: 32px;
+  height: 226px;
+  width: fit-content;
 }
+
 .imgContainer > img {
   border-radius: 8px;
 }
@@ -46,4 +51,36 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22.68px;
+}
+
+@media only screen and (max-width: 1023px) {
+  #gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 29px 24px;
+  }
+  .card {
+    height: 192px;
+  }
+  .imgContainer, .imgContainer > img{
+    width: 220px;
+    height: 140px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #gallery {
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 29px 24px;
+  }
+  .card {
+    height: 154px;
+  }
+  .imgContainer, .imgContainer > img{
+    width: 164px;
+    height: 110px;
+  }
+  .imgContainer .bookmark {
+    top: 8px;
+    right: 8px;
+  }
 }

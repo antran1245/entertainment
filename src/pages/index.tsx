@@ -22,7 +22,6 @@ export default function Home() {
         <div className={styles.content}>
           <SearchBar/>
           <Trending trending={trending}/>
-          <h2>Recommended for you</h2>
           <Gallery data={data}/>
         </div>
       </main>

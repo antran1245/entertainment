@@ -1,10 +1,49 @@
+.container {
+  margin-top: 40px;
+}
+
 #gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 32px;
 }
 
-.img {
+.card {
+  margin-top: 32px;
+}
+.imgContainer > img {
+  border-radius: 8px;
+}
+.imgContainer {
   width: 280px;
   height: 174px;
+  position: relative;
+}
+.imgContainer .bookmark {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(16, 20, 30, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 137px;
+  font-size: 13px;
+  line-height: 16.38px;
+  opacity: .75;
+  margin: 8px 0 5px 0;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22.68px;
 }

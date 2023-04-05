@@ -8,10 +8,13 @@ interface GalleryProp {
 
 export default function Gallery({ data } : GalleryProp) {
   return(
-    <div id={styles.gallery}>
-      {data.map((item: SingleEntry, index: any) => {
-        return <Card item={item}/>
-      })}
+    <div className={styles.container}>
+      <h2>Recommended for you</h2>
+      <div id={styles.gallery}>
+        {data.map((item: SingleEntry, index: any) => {
+          return <Card item={item}/>
+        })}
+      </div>
     </div>
   )
 }

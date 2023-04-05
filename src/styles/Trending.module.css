@@ -58,6 +58,8 @@
   justify-content: space-between;
   color: var(--white);
   opacity: .75;
+  font-size: 15px;
+  line-height: 18.9px;
 }
 .textContainer .title {
   color: var(--white);

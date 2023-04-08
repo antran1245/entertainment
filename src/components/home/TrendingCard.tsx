@@ -2,19 +2,28 @@ import bookmarkEmpty from '/public/assets/icon-bookmark-empty.svg'
 import bookmarkFull from '/public/assets/icon-bookmark-full.svg'
 import movie from '/public/assets/icon-category-movie.svg'
 import tv from '/public/assets/icon-category-tv.svg'
+import play from '/public/assets/icon-play.svg'
 import styles from '@/styles/Trending.module.css'
 import Image from 'next/image'
 import { SingleEntry } from '@/types/data'
+import { useState } from 'react'
 
 interface TrendingCardProp {
   item : SingleEntry
 }
 
 export default function TrendingCard({ item } : TrendingCardProp) {
+  const [overlay, setOverlay] = useState<boolean>(false)
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onMouseEnter={() => setOverlay(true)} onMouseLeave={() => setOverlay(false)}>
       <Image src={`${(item.thumbnail.trending?.large)?.slice(1)}`} alt={`${item.title}`} width={470} height={230}/>
       <div className={styles.cardBody}>
+        <div className={styles.playButton} style={{display: overlay? 'flex' : 'none'}}>
+          <div>
+            <Image src={play} alt='playButton'/>
+            <p>Play</p>
+          </div>
+        </div>
         <div className={styles.bookmarkContainer}>
           <Image src={bookmarkEmpty} alt="bookmark" width={12} height={14}/>
         </div>

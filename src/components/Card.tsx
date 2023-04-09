@@ -17,10 +17,10 @@ export default function Card({ item } : CardProp) {
 
   return(
     <div className={styles.card}>
-      <div className={styles.imgContainer} onMouseEnter={() => setOverlay(true)} onMouseLeave={() => setOverlay(false)}>
-        <Image src={`${item.thumbnail.regular.small.slice(1)}`} alt={`${item.title}`} width={280} height={174} />
+      <div className={styles.imgContainer}>
+        <Image src={`${item.thumbnail.regular.small.slice(1)}`} alt={`${item.title}`} width={280} height={174} onMouseEnter={() => setOverlay(true)} />
         <span className={styles.bookmark}><Image src={bookmarkEmpty} alt="bookmark" /></span>
-        <div className={styles.playButton} style={{ display: overlay ? 'flex' : 'none' }}>
+        <div className={styles.playButton} style={{ display: overlay ? 'flex' : 'none' }} onMouseLeave={() => setOverlay(false)}>
           <div>
             <Image src={play} alt='playButton' />
             <p>Play</p>

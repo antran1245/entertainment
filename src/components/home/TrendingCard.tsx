@@ -15,10 +15,10 @@ interface TrendingCardProp {
 export default function TrendingCard({ item } : TrendingCardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
   return (
-    <div className={styles.card} onMouseEnter={() => setOverlay(true)} onMouseLeave={() => setOverlay(false)}>
+    <div className={styles.card}>
       <Image src={`${(item.thumbnail.trending?.large)?.slice(1)}`} alt={`${item.title}`} width={470} height={230}/>
-      <div className={styles.cardBody}>
-        <div className={styles.playButton} style={{display: overlay? 'flex' : 'none'}}>
+      <div className={styles.cardBody} onMouseEnter={() => setOverlay(true)}>
+        <div className={styles.playButton} style={{ display: overlay ? 'flex' : 'none' }} onMouseLeave={() => setOverlay(false)}>
           <div>
             <Image src={play} alt='playButton'/>
             <p>Play</p>

@@ -39,9 +39,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.cardBody:hover {
-  background-color: rgba(16, 20, 30, .5);
-}
 
 .playButton, .playButton > div {
   justify-content: center;
@@ -50,10 +47,12 @@
 
 .playButton {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(16, 20, 30, .5);
 }
 
 .playButton > div {
@@ -75,6 +74,8 @@
   justify-content: center;
   align-items: center;
   margin-left: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .textContainer .text {

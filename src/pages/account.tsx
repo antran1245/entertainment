@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import logo from '@/assets/logo.svg'
+import logo from '/public/assets/logo.svg'
 import Login from "@/components/account/Login";
 import Signup from "@/components/account/Signup";
 import styles from '@/styles/Account.module.css'

@@ -14,8 +14,12 @@ export default function NavBar() {
         <div>
           <Image src={logo} alt="logo" className={styles.logo}/>
           <div className={styles.iconBar}>
-            <Image src={home} alt="home icon"/>
-            <Image src={movies} alt="movies icon"/>
+            <a href="/">
+              <Image src={home} alt="home icon"/>
+            </a>
+            <a href="/movies">
+              <Image src={movies} alt="movies icon"/>
+            </a>
             <Image src={tv} alt="tv series icon"/>
             <Image src={bookmark} alt="bookmark icon"/>
           </div>

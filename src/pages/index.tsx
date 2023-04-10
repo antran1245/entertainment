@@ -1,9 +1,9 @@
+import { useFetch } from '@/hooks/useFetch'
 import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
 import Trending from '@/components/home/Trending'
 import styles from '@/styles/Home.module.css'
-import { useFetch } from '@/hooks/useFetch'
 import Gallery from '@/components/Gallery'
 
 export default function Home() {

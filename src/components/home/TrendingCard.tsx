@@ -24,7 +24,7 @@ export default function TrendingCard({ item } : TrendingCardProp) {
             <p>Play</p>
           </div>
         </div>
-        <div className={styles.bookmarkContainer}>
+        <div className={styles.bookmarkContainer} onMouseLeave={() => setOverlay(true)}>
           <Image src={bookmarkEmpty} alt="bookmark" width={12} height={14}/>
         </div>
         <div className={styles.textContainer}>

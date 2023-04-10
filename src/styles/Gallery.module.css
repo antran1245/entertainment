@@ -39,6 +39,10 @@
   justify-content: center;
   align-items: center;
 }
+.imgContainer .bookmark:hover {
+  background-color: rgb(0, 0, 0);
+  filter: invert(1);
+}
 
 .playButton, .playButton > div {
   justify-content: center;

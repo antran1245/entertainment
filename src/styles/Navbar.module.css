@@ -20,7 +20,7 @@
   justify-content: space-between;
 }
 
-.nav > div{
+.nav > div {
   align-items: center;
 }
 
@@ -41,8 +41,11 @@
   margin-top: 75px;
 }
 
-.iconBar img {
+.iconBar a {
   margin-bottom: 40px;
+}
+
+.iconBar img {
   background-color: rgba(255, 255, 255, .1);
 }
 
@@ -81,7 +84,7 @@
     width: 173px;
     justify-content: space-between;
   }
-  .iconBar > img {
+  .iconBar > a {
     margin-bottom: 0;
   }
 }

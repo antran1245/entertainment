@@ -20,8 +20,12 @@ export default function NavBar() {
             <a href="/movies">
               <Image src={movies} alt="movies icon"/>
             </a>
-            <Image src={tv} alt="tv series icon"/>
-            <Image src={bookmark} alt="bookmark icon"/>
+            <a href="/">
+              <Image src={tv} alt="tv series icon"/>
+            </a>
+            <a href="/">
+              <Image src={bookmark} alt="bookmark icon"/>
+            </a>
           </div>
         </div>
         <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>

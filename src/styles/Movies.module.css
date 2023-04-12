@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+}
+
+.content {
+  margin-top: 64px;
+  width: 90%;
+}
+
+@media only screen and (max-width: 1023px) {
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    margin-top: 33px;
+    padding-left: 25px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .content {
+    margin-top: 24px;
+    padding-left: 16px;
+  }
+}

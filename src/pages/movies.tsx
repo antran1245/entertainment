@@ -3,6 +3,7 @@ import Head from "next/head";
 import NavBar from '@/components/NavBar';
 import SearchBar from '@/components/SearchBar';
 import Gallery from '@/components/Gallery';
+import styles from '@/styles/Movies.module.css'
 
 export default function Movies() {
   const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')
@@ -14,9 +15,9 @@ export default function Movies() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className={styles.container}>
         <NavBar/>
-        <div>
+        <div className={styles.content}>
           <SearchBar/>
           <Gallery data={movies} />
         </div>

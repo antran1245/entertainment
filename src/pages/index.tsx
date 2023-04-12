@@ -3,7 +3,7 @@ import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
 import Trending from '@/components/home/Trending'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Content.module.css'
 import Gallery from '@/components/Gallery'
 
 export default function Home() {

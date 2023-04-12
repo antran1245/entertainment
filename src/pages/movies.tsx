@@ -3,7 +3,7 @@ import Head from "next/head";
 import NavBar from '@/components/NavBar';
 import SearchBar from '@/components/SearchBar';
 import Gallery from '@/components/Gallery';
-import styles from '@/styles/Movies.module.css'
+import styles from '@/styles/Content.module.css'
 
 export default function Movies() {
   const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')

@@ -12,7 +12,9 @@ export default function NavBar() {
     <div className={styles.navContainer}>
       <nav className={styles.nav}>
         <div>
-          <Image src={logo} alt="logo" className={styles.logo}/>
+          <a href="/">
+            <Image src={logo} alt="logo" className={styles.logo}/>
+          </a>
           <div className={styles.iconBar}>
             <a href="/">
               <Image src={home} alt="home icon"/>
@@ -20,7 +22,7 @@ export default function NavBar() {
             <a href="/movies">
               <Image src={movies} alt="movies icon"/>
             </a>
-            <a href="/">
+            <a href="/tvSeries">
               <Image src={tv} alt="tv series icon"/>
             </a>
             <a href="/">

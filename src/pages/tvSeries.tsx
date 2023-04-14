@@ -10,7 +10,7 @@ export default function TvSeries() {
   return (
     <>
       <Head>
-        <title>Tv Series</title>
+        <title>TV Series</title>
         <meta name="description" content="An's Entertainment Website Tv Series Page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

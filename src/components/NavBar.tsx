@@ -13,7 +13,7 @@ export default function NavBar() {
       <nav className={styles.nav}>
         <div>
           <a href="/">
-            <Image src={logo} alt="logo" className={styles.logo}/>
+            <Image src={logo} alt="logo" className={styles.logo} width={40} height={40}/>
           </a>
           <div className={styles.iconBar}>
             <a href="/">

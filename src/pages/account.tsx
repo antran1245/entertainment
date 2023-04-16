@@ -11,7 +11,7 @@ export default function Account() {
   return(
     <>
       <Head>
-        <title>{switchSetting? 'Login' : 'Sign Up'} Page</title>
+        <title>Account Page</title>
         <meta name="description" content="An's Entertainment Website Login/SignUp" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

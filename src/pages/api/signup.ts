@@ -10,9 +10,10 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const {email, password} = req.body
-  const result = await prisma.user.findUnique({
-    where: {
-      email: email
+  const result = await prisma.user.create({
+    data: {
+      email,
+      password
     }
   })
   console.log(result)

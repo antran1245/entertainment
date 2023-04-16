@@ -12,6 +12,9 @@ export default function Account() {
     <>
       <Head>
         <title>{switchSetting? 'Login' : 'Sign Up'} Page</title>
+        <meta name="description" content="An's Entertainment Website Login/SignUp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.accountContainer}>
         <Image alt="logo" src={logo} className={styles.logo}/>

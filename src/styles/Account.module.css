@@ -50,7 +50,7 @@
 
 .formBox input {
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
   border-bottom: 1px solid var(--grey-blue);
   padding: 0 0 18px 16px;
   caret-color: var(--red);
@@ -66,4 +66,10 @@
 .formBox span {
   color: var(--red);
   cursor: pointer;
+}
+
+.formBox .error {
+  border: 1px solid red;
+  border-radius: 8px;
+  padding: 12px 0 6px 16px;;
 }

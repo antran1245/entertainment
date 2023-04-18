@@ -2,7 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
 
 type Data = {
-  name: string
+  result: boolean,
+  data?: UserInfo | null
+}
+
+type UserInfo = {
+  password: string
 }
 
 export default async function handler(
@@ -10,11 +15,14 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const {email, password} = req.body
-  const result = await prisma.user.findUnique({
-    where: {
-      email: email
-    }
+  const result: UserInfo | null = await prisma.user.findUnique({
+    where: { email: email },
+    select: { password: true }
   })
-  console.log(result)
-  res.status(200).json({ name: 'John Doe' })
+  if(result && result.password === password) {
+    res.json({ result: true })
+  } else {
+    res.json({ result: false })
+  }
+
 }

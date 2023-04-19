@@ -14,10 +14,6 @@ export default function Signup({ setSwitch } : SignupProps) {
     const password = event.currentTarget.password.value
     const repeatPassword = event.currentTarget.repeatPassword.value
 
-    if (!(/^[\w.+\-]+@gmail\.com$/.test(email))) {
-      setError({...error, email: true})
-    }
-
     if(password === repeatPassword && password.trim() !== "") {
       const body = { email, password }
       fetch('/api/signup', {
@@ -39,10 +35,18 @@ export default function Signup({ setSwitch } : SignupProps) {
         .catch(err => console.log('SignUp Error: ', err))
     }
   }
+
+  const validateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!(/^[\w.+\-]+@gmail\.com$/.test(event.target.value))) {
+      setError({ ...error, email: true })
+    } else {
+      setError({ ...error, email: false })
+    }
+  }
   return(
     <form className={styles.formBox} onSubmit={submitSignUp}>
       <h1>Sign Up</h1>
-      <input type="email" placeholder='example1234@gmail.com' id='emailAddress' required className={error.email ? styles.error : ''} pattern='^[\w.+\-]+@gmail\.com$' autoComplete='off'/>
+      <input type="email" placeholder='example1234@gmail.com' id='emailAddress' required className={error.email ? styles.error : ''} onBlur={validateEmail} autoComplete='off'/>
       <input type="password" placeholder='Password' id='password' required className={error.password ? styles.error : ''} />
       <input type="password" placeholder='Repeat password' name='repeatPassword' required className={error.repeat ? styles.error : ''} />
       <button type='submit'>Create an account</button>

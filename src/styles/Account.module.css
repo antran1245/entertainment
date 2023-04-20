@@ -44,7 +44,7 @@
   color: var(--semi-blue);
 }
 
-.formBox button, .formBox input {
+.formBox button, .formBox input, .requirementGrid  {
   margin-bottom: 24px;
 }
 
@@ -70,4 +70,30 @@
 
 .formBox .error {
   border-bottom: 1px solid red;
+}
+
+.formBox .requirementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 10px;
+  column-gap: 30px;
+  margin-top: 15px;
+}
+
+.formBox .requirementGrid p {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.formBox .greenLight, .formBox .greenLight * {
+  color: lightgreen;
+}
+
+.formBox .redLight, .formBox .redLight * {
+  color: rgba(255, 255, 255, .2);
+}
+
+.formBox .requirementGrid span {
+  font-size: 50px;
+  margin-right: 10px;
 }

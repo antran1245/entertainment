@@ -6,6 +6,7 @@ interface SignupProps {
 }
 
 export default function Signup({ setSwitch } : SignupProps) {
+  const [inputs, setInputs] = useState<{ email: string, password: string, repeat: string }>({ email: '', password: '', repeat: '' })
   const [error, setError] = useState<{ email: boolean, password: boolean, repeat: boolean }>({ email: false, password: false, repeat: false })
   const [char, setChar] = useState<{ symbols: boolean, uppercase: boolean, lowercase: boolean, numbers: boolean }>({ symbols: false, uppercase: false, lowercase: false, numbers: false })
   
@@ -13,9 +14,8 @@ export default function Signup({ setSwitch } : SignupProps) {
     event.preventDefault()
     const email = event.currentTarget.emailAddress.value
     const password = event.currentTarget.password.value
-    const repeatPassword = event.currentTarget.repeatPassword.value
 
-    if(password === repeatPassword && password.trim() !== "") {
+    if(error.email && error.password && error.repeat) {
       const body = { email, password }
       fetch('/api/signup', {
         method: "POST",
@@ -37,10 +37,13 @@ export default function Signup({ setSwitch } : SignupProps) {
     }
   }
 
-  const validatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChar({ ...char, uppercase: /[A-Z]{ 1,}/.test(event.target.value), symbols: /[!@#$ %^&*]{ 1,}/.test(event.target.value), lowercase: /[a-z]{ 1,}/.test(event.target.value), numbers: /[0-9]{ 1,}/.test(event.target.value) })
-  }
+  const handleInputs = (event: React.ChangeEvent<HTMLFormElement>) => {
+    const email = event.currentTarget.emailAddress.value
+    const password = event.currentTarget.password.value
+    const repeatPassword = event.currentTarget.repeatPassword.value
 
+    setInputs({ email: email, password: password, repeat: repeatPassword })
+  }
   const validateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!(/^[\w.+\-]+@gmail\.com$/.test(event.target.value))) {
       setError({ ...error, email: true })
@@ -48,11 +51,19 @@ export default function Signup({ setSwitch } : SignupProps) {
       setError({ ...error, email: false })
     }
   }
+  const validatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChar({ ...char, uppercase: /[A-Z]{1,}/.test(event.target.value), symbols: /[!@#$ %^&*]{1,}/.test(event.target.value), lowercase: /[a-z]{1,}/.test(event.target.value), numbers: /[0-9]{1,}/.test(event.target.value) })
+    setError({ ...error, password: !(/[A-Z]{1,}/.test(event.target.value) && /[!@#$ %^&*]{1,}/.test(event.target.value) && /[a-z]{1,}/.test(event.target.value) && /[0-9]{1,}/.test(event.target.value)) })
+  }
+  const validateRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setError({ ...error, repeat: !(event.target.value === inputs.password)})
+  }
+  
   return(
-    <form className={styles.formBox} onSubmit={submitSignUp}>
+    <form className={styles.formBox} onSubmit={submitSignUp} onBlur={handleInputs}>
       <h1>Sign Up</h1>
       <input type="email" placeholder='example1234@gmail.com' id='emailAddress' required className={error.email ? styles.error : ''} onBlur={validateEmail} autoComplete='off'/>
-      <input type="password" placeholder='Password' id='password' required className={error.password ? styles.error : ''} />
+      <input type="password" placeholder='Password' id='password' required className={error.password ? styles.error : ''} onBlur={validatePassword}/>
       <label>Password required at least one</label>
       <div className={styles.requirementGrid}>
         <p className={`${char.symbols? styles.greenLight : styles.redLight}`}><span>&#183;</span>symbol - !@#$%^&*</p>
@@ -60,7 +71,7 @@ export default function Signup({ setSwitch } : SignupProps) {
         <p className={`${char.lowercase? styles.greenLight : styles.redLight}`}><span>&#183;</span>lowercase</p>
         <p className={`${char.numbers? styles.greenLight : styles.redLight}`}><span>&#183;</span>number</p>
       </div>
-      <input type="password" placeholder='Repeat password' name='repeatPassword' required className={error.repeat ? styles.error : ''} />
+      <input type="password" placeholder='Repeat password' name='repeatPassword' required className={error.repeat ? styles.error : ''} onBlur={validateRepeatPassword}/>
       <button type='submit'>Create an account</button>
       <p>Already have an account? &nbsp;<span onClick={() => setSwitch(true)}>Login</span></p>
     </form>

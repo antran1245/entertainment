@@ -15,8 +15,10 @@ export default function Signup({ setSwitch } : SignupProps) {
     const email = event.currentTarget.emailAddress.value
     const password = event.currentTarget.password.value
 
-    if(error.email && error.password && error.repeat) {
+    if(!error.email && !error.password && !error.repeat) {
       const body = { email, password }
+      alert('Created Account')
+
       fetch('/api/signup', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -58,12 +60,27 @@ export default function Signup({ setSwitch } : SignupProps) {
   const validateRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setError({ ...error, repeat: !(event.target.value === inputs.password)})
   }
-  
+  const onChangeRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if(inputs.password === event.target.value) setError({ ...error, repeat: false})
+  }
   return(
     <form className={styles.formBox} onSubmit={submitSignUp} onBlur={handleInputs}>
       <h1>Sign Up</h1>
-      <input type="email" placeholder='example1234@gmail.com' id='emailAddress' required className={error.email ? styles.error : ''} onBlur={validateEmail} autoComplete='off'/>
-      <input type="password" placeholder='Password' id='password' required className={error.password ? styles.error : ''} onBlur={validatePassword}/>
+      <input
+        type="email"
+        placeholder='example1234@gmail.com'
+        id='emailAddress'
+        required
+        className={`${error.email && inputs.email !== "" ?  styles.error : (inputs.email !== ""? styles.correctInput : '')}`} 
+        onBlur={validateEmail}
+        autoComplete='off'/>
+      <input
+        type="password"
+        placeholder='Password'
+        id='password'
+        required 
+        className={`${error.password ? styles.error : ''} ${char.symbols && char.lowercase && char.uppercase && char.numbers? styles.correctInput : ''}`}
+        onBlur={validatePassword}/>
       <label>Password required at least one</label>
       <div className={styles.requirementGrid}>
         <p className={`${char.symbols? styles.greenLight : styles.redLight}`}><span>&#183;</span>symbol - !@#$%^&*</p>
@@ -71,7 +88,13 @@ export default function Signup({ setSwitch } : SignupProps) {
         <p className={`${char.lowercase? styles.greenLight : styles.redLight}`}><span>&#183;</span>lowercase</p>
         <p className={`${char.numbers? styles.greenLight : styles.redLight}`}><span>&#183;</span>number</p>
       </div>
-      <input type="password" placeholder='Repeat password' name='repeatPassword' required className={error.repeat ? styles.error : ''} onBlur={validateRepeatPassword}/>
+      <input
+        type="password"
+        placeholder='Repeat password'
+        name='repeatPassword' 
+        required
+        className={`${error.repeat ? styles.error : ''} ${inputs.password === inputs.repeat && inputs.repeat !== ''? styles.correctInput : ''}`} 
+        onBlur={validateRepeatPassword} onChange={onChangeRepeatPassword}/>
       <button type='submit'>Create an account</button>
       <p>Already have an account? &nbsp;<span onClick={() => setSwitch(true)}>Login</span></p>
     </form>

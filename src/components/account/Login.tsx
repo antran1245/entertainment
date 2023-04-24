@@ -1,10 +1,13 @@
 import styles from '@/styles/Account.module.css'
+import { useState } from 'react'
 
 interface LoginProps {
   setSwitch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function Login({ setSwitch } : LoginProps) {
+  const [errors, setError] = useState<boolean>(false)
+
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
     const password = event.currentTarget.password.value

@@ -63,9 +63,11 @@ export default function Signup({ setSwitch } : SignupProps) {
   const onChangeRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(inputs.password === event.target.value) setError({ ...error, repeat: false})
   }
+  
   return(
     <form className={styles.formBox} onSubmit={submitSignUp} onBlur={handleInputs}>
       <h1>Sign Up</h1>
+
       <input
         type="email"
         placeholder='example1234@gmail.com'
@@ -74,6 +76,7 @@ export default function Signup({ setSwitch } : SignupProps) {
         className={`${error.email && inputs.email !== "" ?  styles.error : (inputs.email !== ""? styles.correctInput : '')}`} 
         onBlur={validateEmail}
         autoComplete='off'/>
+
       <input
         type="password"
         placeholder='Password'
@@ -81,6 +84,7 @@ export default function Signup({ setSwitch } : SignupProps) {
         required 
         className={`${error.password ? styles.error : ''} ${char.symbols && char.lowercase && char.uppercase && char.numbers? styles.correctInput : ''}`}
         onBlur={validatePassword}/>
+
       <label>Password required at least one</label>
       <div className={styles.requirementGrid}>
         <p className={`${char.symbols? styles.greenLight : styles.redLight}`}><span>&#183;</span>symbol - !@#$%^&*</p>
@@ -88,6 +92,7 @@ export default function Signup({ setSwitch } : SignupProps) {
         <p className={`${char.lowercase? styles.greenLight : styles.redLight}`}><span>&#183;</span>lowercase</p>
         <p className={`${char.numbers? styles.greenLight : styles.redLight}`}><span>&#183;</span>number</p>
       </div>
+
       <input
         type="password"
         placeholder='Repeat password'

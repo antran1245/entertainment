@@ -19,13 +19,18 @@ export default function Login({ setSwitch } : LoginProps) {
       body: JSON.stringify(body)
     })
       .then(resp => resp.json())
-      .then(data => console.log('Login: ', data))
+      .then(data => {
+        setError(!data.result)
+        console.log('Login: ', data)
+      })
       .catch(err => console.log('Login Error: ', err))
   }
   return(
     <form className={styles.formBox} onSubmit={submitLogin}>
       <h1>Login</h1>
+      {errors? <label className={styles.errorLabel}>Email or Password is invalid!</label> : ""}
       <input placeholder="Email address" type="text" id='emailAddress'/>
+      {errors ? <label className={styles.errorLabel}>Email or Password is invalid!</label> : ""}
       <input placeholder="Password" type="password" id='password'/>
       <button type="submit">Login to your account</button>
       <p>Don't have an account? &nbsp;<span onClick={() => setSwitch(false)}>Sign Up</span></p>

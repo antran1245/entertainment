@@ -72,6 +72,11 @@
   border-bottom: 1px solid red;
 }
 
+.formBox .errorLabel {
+  color: red;
+  margin-bottom: 5px;
+}
+
 .formBox .requirementGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

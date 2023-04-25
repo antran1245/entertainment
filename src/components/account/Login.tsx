@@ -1,4 +1,5 @@
 import styles from '@/styles/Account.module.css'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 interface LoginProps {
@@ -7,6 +8,7 @@ interface LoginProps {
 
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
+  let router = useRouter()
 
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -21,6 +23,7 @@ export default function Login({ setSwitch } : LoginProps) {
       .then(resp => resp.json())
       .then(data => {
         setError(!data.result)
+        if(data.result) router.push('/')
         console.log('Login: ', data)
       })
       .catch(err => console.log('Login Error: ', err))
@@ -29,7 +32,7 @@ export default function Login({ setSwitch } : LoginProps) {
     <form className={styles.formBox} onSubmit={submitLogin}>
       <h1>Login</h1>
       {errors? <label className={styles.errorLabel}>Email or Password is invalid!</label> : ""}
-      <input placeholder="Email address" type="text" id='emailAddress'/>
+      <input placeholder="Email address" type="text" id='emailAddress' autoComplete='off'/>
       {errors ? <label className={styles.errorLabel}>Email or Password is invalid!</label> : ""}
       <input placeholder="Password" type="password" id='password'/>
       <button type="submit">Login to your account</button>

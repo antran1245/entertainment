@@ -1,6 +1,7 @@
-import styles from '@/styles/Account.module.css'
+import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import styles from '@/styles/Account.module.css'
+import { UserContext } from '@/context/userContext'
 
 interface LoginProps {
   setSwitch: React.Dispatch<React.SetStateAction<boolean>>
@@ -8,6 +9,7 @@ interface LoginProps {
 
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
+  const {setUser, setBookmark} = useContext(UserContext)
   let router = useRouter()
 
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {
@@ -23,7 +25,11 @@ export default function Login({ setSwitch } : LoginProps) {
       .then(resp => resp.json())
       .then(data => {
         setError(!data.result)
-        if(data.result) router.push('/')
+        if(data.result) {
+          setUser(email)
+          setBookmark([])
+          router.push('/')
+        }
         console.log('Login: ', data)
       })
       .catch(err => console.log('Login Error: ', err))

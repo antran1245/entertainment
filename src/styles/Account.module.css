@@ -69,11 +69,11 @@
 }
 
 .formBox .error {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid var(--red);
 }
 
 .formBox .errorLabel {
-  color: red;
+  color: var(--red);
   margin-bottom: 5px;
 }
 

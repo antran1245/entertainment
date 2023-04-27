@@ -4,12 +4,13 @@ import styles from '@/styles/Gallery.module.css'
 
 interface GalleryProp {
   data: Data
+  bookmarkString?: string
 }
 
-export default function Gallery({ data } : GalleryProp) {
+export default function Gallery({ data, bookmarkString = "" } : GalleryProp) {
   return(
     <div className={styles.container}>
-      <h2>Recommended for you</h2>
+      <h2>{bookmarkString !== ""? bookmarkString : 'Recommended for you'}</h2>
       <div id={styles.gallery}>
         {data.map((item: SingleEntry, index: any) => {
           return <Card key={index} item={item}/>

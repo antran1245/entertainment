@@ -26,7 +26,7 @@ export default function Login({ setSwitch } : LoginProps) {
       .then(data => {
         setError(!data.result)
         if(data.result) {
-          setUser(email)
+          setUser({email:email, id: data.id})
           setBookmark([])
           router.push('/')
         }

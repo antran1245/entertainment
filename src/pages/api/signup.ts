@@ -13,12 +13,13 @@ export default async function handler(
 ) {
   const {email, password} = req.body
   try {
-    await prisma.user.create({
+    let user = await prisma.user.create({
       data: {
         email,
         password
       }
     })
+    console.log(user)
     res.status(200).json({ result: true })
   } catch (e) {
     if ((e instanceof Prisma.PrismaClientKnownRequestError) && e.code === 'P2002') {

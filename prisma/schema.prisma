@@ -23,4 +23,5 @@ model Bookmark {
   userId Int @unique
   title String
   year Int
+  category String
 }

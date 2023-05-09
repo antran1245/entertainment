@@ -10,6 +10,7 @@ interface LoginProps {
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
   const {setUser, setBookmark} = useContext(UserContext)
+  console.log(process.env.DATABASE_URL)
   let router = useRouter()
 
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {

@@ -10,7 +10,6 @@ interface LoginProps {
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
   const {setUser, setBookmark} = useContext(UserContext)
-  console.log(process.env.DATABASE_URL)
   let router = useRouter()
 
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {
@@ -27,8 +26,9 @@ export default function Login({ setSwitch } : LoginProps) {
       .then(data => {
         setError(!data.result)
         if(data.result) {
+          console.log(data)
           setUser({email:email, id: data.id})
-          setBookmark([])
+          setBookmark(data.bookmarks)
           router.push('/')
         }
         console.log('Login: ', data)

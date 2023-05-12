@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '@/context/userContext';
 import { useFetch } from '@/hooks/useFetch'
 import Head from "next/head";
 import NavBar from '@/components/NavBar';
@@ -7,6 +9,7 @@ import styles from '@/styles/Content.module.css'
 
 export default function Bookmark() {
   const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')
+  const { bookmark } = useContext(UserContext)
   return (
     <>
       <Head>

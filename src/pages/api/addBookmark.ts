@@ -9,11 +9,7 @@ async function findOrCreateBookmark(userId: number, showId: number) {
     let bookmark = await prisma.bookmark.findFirst({
         where: {
             showId,
-            user: {
-                id: {
-                    in: [userId]
-                }
-            }
+            userId
         }
     })
     if(!bookmark) {

@@ -5,7 +5,7 @@ type Data = {
   result: boolean;
   id?: number;
   data?: UserInfo | null;
-  bookmarks?: Show
+  bookmarks?: BookmarkInfo
 }
 
 type UserInfo = {
@@ -16,12 +16,6 @@ type UserInfo = {
 
 type BookmarkInfo = {
   showId: number
-}[]
-
-type Show = {
-  title: string,
-  year: number,
-  category: string
 }[]
 
 export default async function handler(
@@ -41,13 +35,8 @@ export default async function handler(
         }
     }
   })
-  const shows: Show | null = await prisma.show.findMany({
-    where: {
-      id: { in: result?.bookmarks.map(item => item.showId)}
-    }
-  })
   if(result && result.password === password) {
-    res.json({ result: true, id: result.id, bookmarks: shows })
+    res.json({ result: true, id: result.id, bookmarks: result.bookmarks })
   } else {
     res.json({ result: false })
   }

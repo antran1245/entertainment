@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import logo from '/public/assets/logo.svg'
 import home from '/public/assets/icon-nav-home.svg'
@@ -12,22 +13,22 @@ export default function NavBar() {
     <div className={styles.navContainer}>
       <nav className={styles.nav}>
         <div>
-          <a href="/">
+          <Link href="/">
             <Image src={logo} alt="logo" className={styles.logo} width={40} height={40}/>
-          </a>
+          </Link>
           <div className={styles.iconBar}>
-            <a href="/">
+            <Link href="/">
               <Image src={home} alt="home icon"/>
-            </a>
-            <a href="/movies">
+            </Link>
+            <Link href="/movies">
               <Image src={movies} alt="movies icon"/>
-            </a>
-            <a href="/tvSeries">
+            </Link>
+            <Link href="/tvSeries">
               <Image src={tv} alt="tv series icon"/>
-            </a>
-            <a href="/bookmark">
+            </Link>
+            <Link href="/bookmark">
               <Image src={bookmark} alt="bookmark icon"/>
-            </a>
+            </Link>
           </div>
         </div>
         <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>

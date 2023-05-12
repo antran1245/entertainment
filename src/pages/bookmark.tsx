@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '@/context/userContext';
 import { useFetch } from '@/hooks/useFetch'
 import Head from "next/head";
@@ -8,8 +8,10 @@ import Gallery from '@/components/Gallery';
 import styles from '@/styles/Content.module.css'
 
 export default function Bookmark() {
-  const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')
+  const { movies = [], tvSeries = [] } = useFetch('/api/show')
   const { bookmark } = useContext(UserContext)
+  const [filter, setFilter] = useState<{movies : [], tvSeries: []}>({movies : [], tvSeries: []})
+  
   return (
     <>
       <Head>
@@ -23,9 +25,9 @@ export default function Bookmark() {
         <div className={styles.content}>
           <SearchBar />
           
-          <Gallery data={movies} bookmarkString='Bookmarked Movies'/>
+          <Gallery data={filter.movies} bookmarkString='Bookmarked Movies'/>
 
-          <Gallery data={tvSeries} bookmarkString='Bookmarked TV Series' />
+          <Gallery data={filter.tvSeries} bookmarkString='Bookmarked TV Series' />
         </div>
       </main>
     </>

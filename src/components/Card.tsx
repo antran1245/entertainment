@@ -18,7 +18,7 @@ export default function Card({ item } : CardProp) {
   const { user } = useContext(UserContext)
   
   const bookmarking = ( entry : SingleEntry ) => {
-    const body = {id: user.id, title: entry.title, year: entry.year, category: entry.category }
+    const body = {id: user.id, showId: entry.id }
     console.log(body)
     fetch('/api/addBookmark', {
       method: "POST",

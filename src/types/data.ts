@@ -1,4 +1,5 @@
 export type Data = {
+  id: number;
   title: String;
   thumbnail: {
     trending?: {
@@ -19,6 +20,7 @@ export type Data = {
 }[]
 
 export type SingleEntry = {
+  id: number;
   title: String;
   thumbnail: {
     trending?: {

@@ -25,7 +25,7 @@ export default function NavBar() {
             <a href="/tvSeries">
               <Image src={tv} alt="tv series icon"/>
             </a>
-            <a href="/">
+            <a href="/bookmark">
               <Image src={bookmark} alt="bookmark icon"/>
             </a>
           </div>

@@ -1,16 +1,13 @@
-import React, { ReactNode, createContext, useEffect, useState } from "react";
+import { Data } from "@/types/data";
+import React, { ReactNode, createContext, useState } from "react";
 
 type userContextType = {
-  user: { email: string | null; id: number | null };
-  setUser: React.Dispatch<React.SetStateAction<{ email: string | null; id: number | null }>>;
-  bookmark: [];
-  setBookmark: React.Dispatch<React.SetStateAction<[]>>
+  user: { email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} };
+  setUser: React.Dispatch<React.SetStateAction<{ email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} }>>;
 }
 const userContextDefaultValues: userContextType = {
-  user: { email: null, id: null },
+  user: { email: null, id: null, bookmarks: {movies: [], tvSeries: []} },
   setUser: () => {},
-  bookmark: [],
-  setBookmark: () => {}
 }
 export const UserContext = createContext<userContextType>(userContextDefaultValues)
 
@@ -19,11 +16,10 @@ type UserProp = {
 }
 
 export default function UserWrapper({children} : UserProp) {
-  const [user, setUser] = useState<{ email: string | null; id: number | null }>({ email: null, id: null })
-  const [bookmark, setBookmark] = useState<[]>([])
-  
+  const [user, setUser] = useState<{ email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} }>({ email: null, id: null, bookmarks: {movies: [], tvSeries: []} })
+
   return(
-    <UserContext.Provider value={{user, setUser, bookmark, setBookmark}}>
+    <UserContext.Provider value={{user, setUser}}>
       {children}
     </UserContext.Provider>
   )

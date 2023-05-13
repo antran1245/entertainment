@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
-import styles from '@/styles/Account.module.css'
 import { UserContext } from '@/context/userContext'
+import { useFetch } from '@/hooks/useFetch'
+import styles from '@/styles/Account.module.css'
 
 interface LoginProps {
   setSwitch: React.Dispatch<React.SetStateAction<boolean>>
@@ -9,7 +10,8 @@ interface LoginProps {
 
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
-  const {setUser, setBookmark} = useContext(UserContext)
+  const {setUser} = useContext(UserContext)
+  const { data = [] } = useFetch('/api/show')
   let router = useRouter()
 
   const submitLogin = (event: React.SyntheticEvent<HTMLFormElement>) => {
@@ -23,15 +25,24 @@ export default function Login({ setSwitch } : LoginProps) {
       body: JSON.stringify(body)
     })
       .then(resp => resp.json())
-      .then(data => {
-        setError(!data.result)
-        if(data.result) {
-          console.log(data)
-          setUser({email:email, id: data.id})
-          setBookmark(data.bookmarks)
+      .then(dataResp => {
+        setError(!dataResp.result)
+        if(dataResp.result) {
+          let currMovies = []
+          let currTVSeries = []
+          let bookmarksArr = dataResp.bookmarks.map((item : any) => item.showId)
+            for(let i = 0; i < data.length; i++) {
+              if(bookmarksArr.includes(data[i]["id"])) {
+                if(data[i]["category"] === "TV Series") {
+                  currTVSeries.push(data[i])
+                } else {
+                  currMovies.push(data[i])
+                }
+              }
+            }
+          setUser({email:email, id: dataResp.id, bookmarks: {movies: currMovies, tvSeries: currTVSeries}})
           router.push('/')
         }
-        console.log('Login: ', data)
       })
       .catch(err => console.log('Login Error: ', err))
   }

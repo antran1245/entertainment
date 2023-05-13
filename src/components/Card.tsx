@@ -15,21 +15,16 @@ interface CardProp {
 
 export default function Card({ item } : CardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
-  const { user } = useContext(UserContext)
+  const { user, bookmark } = useContext(UserContext)
   
   const bookmarking = ( entry : SingleEntry ) => {
     const body = {id: user.id, showId: entry.id }
-    console.log(body)
+    console.log(bookmark)
     fetch('/api/addBookmark', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body)
     })
-      .then(resp => resp.json())
-      .then(data => {
-        console.log(data)
-      })
-      .catch(err => console.log('Login Error: ', err))
   }
 
   return(

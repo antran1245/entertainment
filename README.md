@@ -23,7 +23,14 @@ Start the application with `yarn dev` or `npm run dev`.
 
 ## Information
 
+Restructure `data.json` file to include a `id` key for easier bookmarking.
+
+- Database
+  - PostgreSQL
+  - Small dataset, so saving array of `id` for bookmark as a one to many relation.
+  - If the dataset is large, saving the full detail of the series/movies with a many to many relation database.
+
 - Languages
-  - TypeScript
+  - JavaScript/TypeScript
   - HTML
   - CSS

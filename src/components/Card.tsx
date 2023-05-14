@@ -15,16 +15,20 @@ interface CardProp {
 
 export default function Card({ item } : CardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
-  const { user, bookmark } = useContext(UserContext)
+  const { user } = useContext(UserContext)
   
   const bookmarking = ( entry : SingleEntry ) => {
-    const body = {id: user.id, showId: entry.id }
-    console.log(bookmark)
-    fetch('/api/addBookmark', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    })
+    if(user.email) {
+      const body = {id: user.id, showId: entry.id }
+      let bookmarkArr = [...user.bookmarks.movies.map((item:any) => item.id), user.bookmarks.tvSeries.map((item:any) => item.id)]
+      if(!bookmarkArr.includes(entry.id)) {
+        fetch('/api/addBookmark', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        })
+      }
+    }
   }
 
   return(

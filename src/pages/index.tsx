@@ -7,8 +7,8 @@ import styles from '@/styles/Content.module.css'
 import Gallery from '@/components/Gallery'
 
 export default function Home() {
-  const { data = [], movies = [], tvSeries = [], trending = [] } = useFetch('/api/show')
-  
+  const { data = [], trending = [] } = useFetch('/api/show')
+
   return (
     <>
       <Head>
@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
-        <NavBar/>
+        <NavBar />
         <div className={styles.content}>
           <SearchBar/>
           <Trending trending={trending}/>

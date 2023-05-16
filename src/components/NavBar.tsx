@@ -1,3 +1,5 @@
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '@/context/userContext'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '/public/assets/logo.svg'
@@ -7,8 +9,15 @@ import tv from '/public/assets/icon-nav-tv-series.svg'
 import bookmark from '/public/assets/icon-nav-bookmark.svg'
 import avatar from '/public/assets/image-avatar.png'
 import styles from '@/styles/Navbar.module.css'
+import accountCircle from '/public/accountCircle.svg'
 
 export default function NavBar() {
+  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    setIsLogin(user.email !== null)
+  }, [user])
   return(
     <div className={styles.navContainer}>
       <nav className={styles.nav}>
@@ -32,7 +41,7 @@ export default function NavBar() {
           </div>
         </div>
         <Link href="/account">
-          <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>
+          <Image src={isLogin? avatar : accountCircle} alt="avatar" width={40} height={40} className={styles.avatar}/>
         </Link>
       </nav>
     </div>

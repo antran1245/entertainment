@@ -19,7 +19,7 @@ export default function Bookmark() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
-        <NavBar />
+        <NavBar/>
         <div className={styles.content}>
           <SearchBar />
           

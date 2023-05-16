@@ -31,7 +31,9 @@ export default function NavBar() {
             </Link>
           </div>
         </div>
-        <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>
+        <Link href="/account">
+          <Image src={avatar} alt="avatar" width={40} height={40} className={styles.avatar}/>
+        </Link>
       </nav>
     </div>
   )

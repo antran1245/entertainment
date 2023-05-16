@@ -34,3 +34,11 @@ Restructure `data.json` file to include a `id` key for easier bookmarking.
   - JavaScript/TypeScript
   - HTML
   - CSS
+
+## Credit
+
+-  [Frontend Mentor](https://www.frontendmentor.io/)
+  - JSON data file
+  - Figma Design
+- [Google Font Material Symbols and Icons](https://fonts.google.com/)
+  - Account Cirlce Icon 

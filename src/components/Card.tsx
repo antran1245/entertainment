@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { UserContext } from "@/context/userContext"
 import { SingleEntry } from "@/types/data"
+import { useRouter } from 'next/router'
 import Image from "next/image"
 import bookmarkEmpty from '/public/assets/icon-bookmark-empty.svg'
 import bookmarkFull from '/public/assets/icon-bookmark-full.svg'
@@ -8,13 +9,13 @@ import movie from '/public/assets/icon-category-movie.svg'
 import tv from '/public/assets/icon-category-tv.svg'
 import play from '/public/assets/icon-play.svg'
 import styles from '@/styles/Gallery.module.css'
-import { useRouter } from 'next/router'
 
 interface CardProp {
-  item : SingleEntry
+  item : SingleEntry;
+  isBookmark: boolean
 }
 
-export default function Card({ item } : CardProp) {
+export default function Card({ item, isBookmark } : CardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
   const { user } = useContext(UserContext)
   const router = useRouter()
@@ -39,7 +40,7 @@ export default function Card({ item } : CardProp) {
     <div className={styles.card}>
       <div className={styles.imgContainer}>
         <Image src={`${item.thumbnail.regular.small.slice(1)}`} alt={`${item.title}`} width={280} height={174} onMouseEnter={() => setOverlay(true)} />
-        <span className={styles.bookmark} onClick={() => bookmarking(item)}><Image src={bookmarkEmpty} alt="bookmark" /></span>
+        <span className={styles.bookmark} onClick={() => bookmarking(item)}><Image src={ isBookmark? bookmarkFull : bookmarkEmpty} alt="bookmark" /></span>
         <div className={styles.playButton} style={{ display: overlay ? 'flex' : 'none' }} onMouseLeave={() => setOverlay(false)}>
           <div>
             <Image src={play} alt='playButton' />

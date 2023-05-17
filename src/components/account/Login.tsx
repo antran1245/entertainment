@@ -10,7 +10,7 @@ interface LoginProps {
 
 export default function Login({ setSwitch } : LoginProps) {
   const [errors, setError] = useState<boolean>(false)
-  const {setUser} = useContext(UserContext)
+  const {setUser, setIsBookmark} = useContext(UserContext)
   const { data = [] } = useFetch('/api/show')
   let router = useRouter()
 
@@ -41,6 +41,7 @@ export default function Login({ setSwitch } : LoginProps) {
               }
             }
           setUser({email:email, id: dataResp.id, bookmarks: {movies: currMovies, tvSeries: currTVSeries}})
+          setIsBookmark(bookmarksArr)
           router.push('/')
         }
       })

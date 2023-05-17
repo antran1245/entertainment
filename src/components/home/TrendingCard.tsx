@@ -1,3 +1,7 @@
+import { useContext, useState } from 'react'
+import { UserContext } from "@/context/userContext"
+import { SingleEntry } from "@/types/data"
+import { useRouter } from 'next/router'
 import bookmarkEmpty from '/public/assets/icon-bookmark-empty.svg'
 import bookmarkFull from '/public/assets/icon-bookmark-full.svg'
 import movie from '/public/assets/icon-category-movie.svg'
@@ -5,15 +9,33 @@ import tv from '/public/assets/icon-category-tv.svg'
 import play from '/public/assets/icon-play.svg'
 import styles from '@/styles/Trending.module.css'
 import Image from 'next/image'
-import { SingleEntry } from '@/types/data'
-import { useState } from 'react'
 
 interface TrendingCardProp {
-  item : SingleEntry
+  item : SingleEntry;
+  isBookmark: boolean;
 }
 
-export default function TrendingCard({ item } : TrendingCardProp) {
+export default function TrendingCard({ item, isBookmark } : TrendingCardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
+  const { user } = useContext(UserContext)
+  const router = useRouter()
+  
+  const bookmarking = ( entry : SingleEntry ) => {
+    if(user.email) {
+      const body = {id: user.id, showId: entry.id }
+      let bookmarkArr = [...user.bookmarks.movies.map((item:any) => item.id), user.bookmarks.tvSeries.map((item:any) => item.id)]
+      if(!bookmarkArr.includes(entry.id)) {
+        fetch('/api/addBookmark', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        })
+      }
+    } else {
+      router.push('/account')
+    }
+  }
+  
   return (
     <div className={styles.card}>
       <Image src={`${(item.thumbnail.trending?.large)?.slice(1)}`} alt={`${item.title}`} width={470} height={230}/>
@@ -24,8 +46,8 @@ export default function TrendingCard({ item } : TrendingCardProp) {
             <p>Play</p>
           </div>
         </div>
-        <div className={styles.bookmarkContainer} onMouseLeave={() => setOverlay(true)}>
-          <Image src={bookmarkEmpty} alt="bookmark" width={12} height={14}/>
+        <div className={styles.bookmarkContainer} onMouseLeave={() => setOverlay(true)} onClick={() => bookmarking(item)}>
+          <Image src={isBookmark? bookmarkFull : bookmarkEmpty} alt="bookmark" width={12} height={14}/>
         </div>
         <div className={styles.textContainer}>
           <div className={styles.text}>

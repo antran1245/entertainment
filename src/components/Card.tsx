@@ -8,6 +8,7 @@ import movie from '/public/assets/icon-category-movie.svg'
 import tv from '/public/assets/icon-category-tv.svg'
 import play from '/public/assets/icon-play.svg'
 import styles from '@/styles/Gallery.module.css'
+import { useRouter } from 'next/router'
 
 interface CardProp {
   item : SingleEntry
@@ -16,6 +17,7 @@ interface CardProp {
 export default function Card({ item } : CardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
   const { user } = useContext(UserContext)
+  const router = useRouter()
   
   const bookmarking = ( entry : SingleEntry ) => {
     if(user.email) {
@@ -28,6 +30,8 @@ export default function Card({ item } : CardProp) {
           body: JSON.stringify(body)
         })
       }
+    } else {
+      router.push('/account')
     }
   }
 

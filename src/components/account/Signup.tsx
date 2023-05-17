@@ -1,4 +1,5 @@
 import styles from '@/styles/Account.module.css'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 interface SignupProps {
@@ -9,7 +10,8 @@ export default function Signup({ setSwitch } : SignupProps) {
   const [inputs, setInputs] = useState<{ email: string, password: string, repeat: string }>({ email: '', password: '', repeat: '' })
   const [error, setError] = useState<{ email: boolean, password: boolean, repeat: boolean }>({ email: false, password: false, repeat: false })
   const [char, setChar] = useState<{ symbols: boolean, uppercase: boolean, lowercase: boolean, numbers: boolean }>({ symbols: false, uppercase: false, lowercase: false, numbers: false })
-  
+  const router = useRouter()
+
   const submitSignUp = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
     const email = event.currentTarget.emailAddress.value
@@ -26,10 +28,10 @@ export default function Signup({ setSwitch } : SignupProps) {
       })
         .then(resp => resp.json())
         .then(data => {
-          console.log('SignUp: ', data)
           if(!data.result) {
             if(data.reason) {
               alert(data.reason)
+              router.push('/')
             } else {
               alert('Error making the account.')
             }

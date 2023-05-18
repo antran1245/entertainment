@@ -31,6 +31,7 @@ export default function Signup({ setSwitch } : SignupProps) {
           if(!data.result) {
             if(data.reason) {
               alert(data.reason)
+              localStorage.setItem('user', JSON.stringify(body))
               router.push('/')
             } else {
               alert('Error making the account.')

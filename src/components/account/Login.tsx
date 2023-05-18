@@ -42,6 +42,7 @@ export default function Login({ setSwitch } : LoginProps) {
             }
           setUser({email:email, id: dataResp.id, bookmarks: {movies: currMovies, tvSeries: currTVSeries}})
           setIsBookmark(bookmarksArr)
+          localStorage.setItem('user', JSON.stringify(body))
           router.push('/')
         }
       })

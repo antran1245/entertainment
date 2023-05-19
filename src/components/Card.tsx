@@ -17,7 +17,7 @@ interface CardProp {
 
 export default function Card({ item, isBookmark } : CardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
-  const { user } = useContext(UserContext)
+  const { user, isBookmarkArr, setIsBookmarkArr } = useContext(UserContext)
   const router = useRouter()
   
   const bookmarking = ( entry : SingleEntry ) => {
@@ -30,6 +30,7 @@ export default function Card({ item, isBookmark } : CardProp) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         })
+        setIsBookmarkArr([...isBookmarkArr, entry.id])
       }
     } else {
       router.push('/account')

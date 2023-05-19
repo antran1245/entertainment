@@ -17,7 +17,7 @@ interface TrendingCardProp {
 
 export default function TrendingCard({ item, isBookmark } : TrendingCardProp) {
   const [overlay, setOverlay] = useState<boolean>(false)
-  const { user } = useContext(UserContext)
+  const { user, isBookmarkArr, setIsBookmarkArr } = useContext(UserContext)
   const router = useRouter()
   
   const bookmarking = ( entry : SingleEntry ) => {
@@ -30,6 +30,7 @@ export default function TrendingCard({ item, isBookmark } : TrendingCardProp) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         })
+        setIsBookmarkArr([...isBookmarkArr, entry.id])
       }
     } else {
       router.push('/account')

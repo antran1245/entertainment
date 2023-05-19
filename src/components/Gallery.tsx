@@ -10,13 +10,13 @@ interface GalleryProp {
 }
 
 export default function Gallery({ data, bookmarkString = "" } : GalleryProp) {
-  const { isBookmark } = useContext(UserContext)
+  const { isBookmarkArr } = useContext(UserContext)
   return(
     <div className={styles.container}>
       <h2>{bookmarkString !== ""? bookmarkString : 'Recommended for you'}</h2>
       <div id={styles.gallery}>
         {data.map((item: SingleEntry, index: any) => {
-          return <Card key={index} item={item} isBookmark={isBookmark.includes(item.id)}/>
+          return <Card key={index} item={item} isBookmark={isBookmarkArr.includes(item.id)}/>
         })}
       </div>
     </div>

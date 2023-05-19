@@ -13,7 +13,7 @@ export default function Trending({ trending }: TrendingProp) {
   const [isScrolling, setIsScrolling] = useState<Boolean>(false)
   const [clientX, setClientX] = useState<number>(0)
   const [scrollX, setScrollX] = useState<number>(0)
-  const { isBookmark } = useContext(UserContext)
+  const { isBookmarkArr } = useContext(UserContext)
 
   const mouseDown = (e: React.MouseEvent) => {
     setIsScrolling(true)
@@ -37,7 +37,7 @@ export default function Trending({ trending }: TrendingProp) {
       <h1>Trending</h1>
       <div ref={ref} onMouseDown={(e) => mouseDown(e)} onMouseUp={() => setIsScrolling(false)} onMouseMove={(e) => scrollingTrend(e)}>
         {trending.map((item : SingleEntry, index : any) => {
-          return <TrendingCard key={index} item={item} isBookmark={isBookmark.includes(item.id)}/>
+          return <TrendingCard key={index} item={item} isBookmark={isBookmarkArr.includes(item.id)}/>
         })}
       </div>
     </section>

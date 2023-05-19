@@ -5,14 +5,14 @@ import React, { ReactNode, createContext, useEffect, useState } from "react";
 type userContextType = {
   user: { email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} };
   setUser: React.Dispatch<React.SetStateAction<{ email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} }>>;
-  isBookmark: number[];
-  setIsBookmark: React.Dispatch<React.SetStateAction<number[]>>
+  isBookmarkArr: number[];
+  setIsBookmarkArr: React.Dispatch<React.SetStateAction<number[]>>
 }
 const userContextDefaultValues: userContextType = {
   user: { email: null, id: null, bookmarks: {movies: [], tvSeries: []} },
   setUser: () => {},
-  isBookmark: [],
-  setIsBookmark: () => {}
+  isBookmarkArr: [],
+  setIsBookmarkArr: () => {}
 }
 export const UserContext = createContext<userContextType>(userContextDefaultValues)
 
@@ -22,7 +22,7 @@ type UserProp = {
 
 export default function UserWrapper({children} : UserProp) {
   const [user, setUser] = useState<{ email: string | null; id: number | null, bookmarks: {movies: Data | []; tvSeries: Data | []} }>({ email: null, id: null, bookmarks: {movies: [], tvSeries: []} })
-  const [isBookmark, setIsBookmark] = useState<number[]>([])
+  const [isBookmarkArr, setIsBookmarkArr] = useState<number[]>([])
   const { data = [] } = useFetch('/api/show')
   
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function UserWrapper({children} : UserProp) {
                 }
               }
             setUser({email: body.email, id: dataResp.id, bookmarks: {movies: currMovies, tvSeries: currTVSeries}})
-            setIsBookmark(bookmarksArr)
+            setIsBookmarkArr(bookmarksArr)
           }
         })
         .catch(err => console.log('Login Error: ', err))
@@ -60,7 +60,7 @@ export default function UserWrapper({children} : UserProp) {
   }, [])
 
   return(
-    <UserContext.Provider value={{user, setUser, isBookmark, setIsBookmark}}>
+    <UserContext.Provider value={{user, setUser, isBookmarkArr, setIsBookmarkArr}}>
       {children}
     </UserContext.Provider>
   )

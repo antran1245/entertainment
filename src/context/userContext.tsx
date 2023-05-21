@@ -29,7 +29,6 @@ export default function UserWrapper({children} : UserProp) {
     let storeUser = localStorage.getItem('user')
     if(storeUser) {
       const body = JSON.parse(storeUser)
-      console.log(body)
       fetch('/api/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,7 +37,6 @@ export default function UserWrapper({children} : UserProp) {
         .then(resp => resp.json())
         .then(dataResp => {
           if(dataResp.result) {
-            console.log('sign in')
             let currMovies = []
             let currTVSeries = []
             let bookmarksArr = dataResp.bookmarks.map((item : any) => item.showId)

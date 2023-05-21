@@ -23,14 +23,23 @@ export default function Card({ item, isBookmark } : CardProp) {
   const bookmarking = ( entry : SingleEntry ) => {
     if(user.email) {
       const body = {id: user.id, showId: entry.id }
-      let bookmarkArr = [...user.bookmarks.movies.map((item:any) => item.id), user.bookmarks.tvSeries.map((item:any) => item.id)]
-      if(!bookmarkArr.includes(entry.id)) {
+      if(!isBookmarkArr.includes(entry.id)) {
         fetch('/api/addBookmark', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         })
         setIsBookmarkArr([...isBookmarkArr, entry.id])
+      } else {
+        fetch('/api/deleteBookmark', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        })
+        let currBookmarkArr = isBookmarkArr
+        const index = currBookmarkArr.indexOf(entry.id)
+        currBookmarkArr.splice(index, 1)
+        setIsBookmarkArr([...currBookmarkArr])
       }
     } else {
       router.push('/account')

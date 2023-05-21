@@ -2,18 +2,20 @@
 
 Recreate [entertainment-app](https://github.com/antran1245/entertainment-app) with Next.js, a database for users to keep track of bookmark show(s)/movie(s), and using TypeScript.
 
+[Live Link](https://entertainment-gamma.vercel.app/)
+
 ## Goals
 
-    [ ] Recreate the frontend
-      [ ] Use TypeScript
-      [ ] No framework. Pure CSS
+    [x] Recreate the frontend
+      [x] Use TypeScript
+      [x] No framework. Pure CSS
 
-    [ ] Enable Backend
-      [ ] Database: PostgreSQL
+    [x] Enable Backend
+      [x] Database: PostgreSQL
       [ ] NextAuth.js
-      [ ] Prisma
+      [x] Prisma
 
-    [ ] Deploy
+    [x] Deploy
 
 ## Run
 

@@ -35,6 +35,12 @@ Restructure `data.json` file to include a `id` key for easier bookmarking.
   - HTML
   - CSS
 
+## Features
+
+- Able to Sign Up and Log in.
+- Log in automatically to previous log in account.
+- Bookmark movies and Tv Series.
+
 ## Credit
 
 -  [Frontend Mentor](https://www.frontendmentor.io/)

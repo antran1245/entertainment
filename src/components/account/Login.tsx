@@ -56,7 +56,7 @@ export default function Login({ setSwitch } : LoginProps) {
       {errors ? <label className={styles.errorLabel}>Email or Password is invalid!</label> : ""}
       <input placeholder="Password" type="password" id='password'/>
       <button type="submit">Login to your account</button>
-      <p>Don't have an account? &nbsp;<span onClick={() => setSwitch(false)}>Sign Up</span></p>
+      <p>Don&apos;t have an account? &nbsp;<span onClick={() => setSwitch(false)}>Sign Up</span></p>
     </form>
   )
 }

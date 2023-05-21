@@ -55,7 +55,7 @@ export default function UserWrapper({children} : UserProp) {
         })
         .catch(err => console.log('Login Error: ', err))
     }
-  }, [])
+  }, [data])
 
   return(
     <UserContext.Provider value={{user, setUser, isBookmarkArr, setIsBookmarkArr}}>

@@ -8,17 +8,15 @@ export const useFetch = (url : string) => {
   const [trending, setTrending] = useState<Data | []>([])
 
   useEffect(() => {
-    if(data.length === 0) {
-      fetch(url)
-      .then(resp => resp.json())
-      .then(shows => {
-        setData(shows)
-        setMovies(shows.filter((item : any) => item.category === 'Movie'))
-        setTvSeries(shows.filter((item : any) => item.category === 'TV Series'))
-        setTrending(shows.filter((item : any) => item.isTrending))
-      })
-      .catch(err => console.error(err))
-    }
+    fetch(url)
+    .then(resp => resp.json())
+    .then(shows => {
+      setData(shows)
+      setMovies(shows.filter((item : any) => item.category === 'Movie'))
+      setTvSeries(shows.filter((item : any) => item.category === 'TV Series'))
+      setTrending(shows.filter((item : any) => item.isTrending))
+    })
+    .catch(err => console.error(err))
   }, [])
 
   return {data, movies, tvSeries, trending}

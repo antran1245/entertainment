@@ -4,7 +4,8 @@ import { Prisma } from '@prisma/client'
 
 type Data = {
   result: boolean;
-  reason?: string
+  reason?: string;
+  id?: number;
 }
 
 export default async function handler(
@@ -17,10 +18,11 @@ export default async function handler(
       data: {
         email,
         password
-      }
+      },
+      select: {id: true}
     })
     console.log(user)
-    res.status(200).json({ result: true })
+    res.status(200).json({ result: true, id: user.id })
   } catch (e) {
     if ((e instanceof Prisma.PrismaClientKnownRequestError) && e.code === 'P2002') {
       res.json({ result: false, reason: 'Email Exist' })

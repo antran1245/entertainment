@@ -1,6 +1,7 @@
-import styles from '@/styles/Account.module.css'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { UserContext } from '@/context/userContext'
+import styles from '@/styles/Account.module.css'
 
 interface SignupProps {
   setSwitch: React.Dispatch<React.SetStateAction<boolean>>
@@ -11,6 +12,7 @@ export default function Signup({ setSwitch } : SignupProps) {
   const [error, setError] = useState<{ email: boolean, password: boolean, repeat: boolean }>({ email: false, password: false, repeat: false })
   const [char, setChar] = useState<{ symbols: boolean, uppercase: boolean, lowercase: boolean, numbers: boolean }>({ symbols: false, uppercase: false, lowercase: false, numbers: false })
   const router = useRouter()
+  const { setUser, setIsBookmarkArr } = useContext(UserContext)
 
   const submitSignUp = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -19,8 +21,6 @@ export default function Signup({ setSwitch } : SignupProps) {
 
     if(!error.email && !error.password && !error.repeat) {
       const body = { email, password }
-      alert('Created Account')
-
       fetch('/api/signup', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,14 +28,13 @@ export default function Signup({ setSwitch } : SignupProps) {
       })
         .then(resp => resp.json())
         .then(data => {
-          if(!data.result) {
-            if(data.reason) {
-              alert(data.reason)
-              localStorage.setItem('SccfmPhDeV', JSON.stringify(body))
-              router.push('/')
-            } else {
-              alert('Error making the account.')
-            }
+          if(data.result) {
+            setUser({email:email, id: data.id, bookmarks: {movies: [], tvSeries: []}})
+            setIsBookmarkArr([])
+            localStorage.setItem('SccfmPhDeV', JSON.stringify(body))
+            router.push('/')
+          } else {
+            alert('Error making the account. ')
           }
         })
         .catch(err => console.log('SignUp Error: ', err))

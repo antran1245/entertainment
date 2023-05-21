@@ -39,6 +39,7 @@ Restructure `data.json` file to include a `id` key for easier bookmarking.
 
 - Able to Sign Up and Log in.
 - Log in automatically to previous log in account.
+- Save user information in Local Storage with the key named `SccfmPhDeV`
 - Bookmark movies and Tv Series.
 
 ## Credit

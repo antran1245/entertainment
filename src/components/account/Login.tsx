@@ -42,7 +42,7 @@ export default function Login({ setSwitch } : LoginProps) {
             }
           setUser({email:email, id: dataResp.id, bookmarks: {movies: currMovies, tvSeries: currTVSeries}})
           setIsBookmarkArr([...bookmarksArr])
-          localStorage.setItem('user', JSON.stringify(body))
+          localStorage.setItem('SccfmPhDeV', JSON.stringify(body))
           router.push('/')
         }
       })

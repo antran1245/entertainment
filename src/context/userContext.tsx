@@ -26,7 +26,7 @@ export default function UserWrapper({children} : UserProp) {
   const { data = [] } = useFetch('/api/show')
   
   useEffect(() => {
-    let storeUser = localStorage.getItem('user')
+    let storeUser = localStorage.getItem('SccfmPhDeV')
     if(storeUser) {
       const body = JSON.parse(storeUser)
       fetch('/api/login', {

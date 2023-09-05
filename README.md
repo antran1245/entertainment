@@ -3,6 +3,7 @@
 Recreate [entertainment-app](https://github.com/antran1245/entertainment-app) with Next.js, a database for users to keep track of bookmark show(s)/movie(s), and using TypeScript.
 
 [Live Link](https://entertainment-gamma.vercel.app/)
+**Notice** Currently the database is offline, so unable to save.
 
 ## Goals
 
